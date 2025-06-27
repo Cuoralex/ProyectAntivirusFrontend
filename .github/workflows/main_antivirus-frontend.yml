@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     permissions:
       contents: read #This is required for actions/checkout
 
@@ -28,15 +28,12 @@ jobs:
           npm install
           npm run build --if-present
           npm run test --if-present
-
-      - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
-
+      
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          path: release.zip
+          path: .
 
   deploy:
     runs-on: ubuntu-latest
@@ -50,20 +47,17 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: node-app
-
-      - name: Unzip artifact for deployment
-        run: unzip release.zip
       
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_A7FFA629A7F54CEAB2133C5060EA74A6 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_477172AF55A9475EB053E66B0B912121 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_872B4714D49245238D67CE3CAFE9C29F }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_A83828D08F644B0D8461AF7B21A148AD }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_2C565F70430846D9A329678A727AB8BC }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_D6BC2EF9768B413D8DEC0F12C3BE8B6D }}
 
       - name: 'Deploy to Azure Web App'
-        id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
+        id: deploy-to-webapp
         with:
           app-name: 'antivirus-frontend'
           slot-name: 'Production'
