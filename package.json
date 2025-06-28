@@ -2,9 +2,9 @@
   "name": "proyectantivirusfrontend",
   "private": true,
   "sideEffects": false,
+  "type": "module",
   "scripts": {
     "build": "remix vite:build",
-    "type": "module",
     "dev": "remix vite:dev",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "start": "remix-serve ./build/server/index.js",
@@ -40,6 +40,7 @@
     "zustand": "^5.0.3"
   },
   "devDependencies": {
+    "@netlify/remix-adapter": "^2.6.1",
     "@remix-run/dev": "^2.15.3",
     "@remix-run/netlify": "^1.19.3",
     "@types/jsonwebtoken": "^9.0.9",

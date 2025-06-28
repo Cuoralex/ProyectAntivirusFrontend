@@ -1,0 +1,1 @@
+{"inputs":{"netlify/functions/server.js":{"bytes":381,"imports":[],"format":"esm"}},"outputs":{"netlify/functions/server.js":{"imports":[],"exports":["default"],"entryPoint":"netlify/functions/server.js","inputs":{"netlify/functions/server.js":{"bytesInOutput":314}},"bytes":385}}}

@@ -1,7 +1,7 @@
 import { Outlet, Link, useLocation } from "@remix-run/react";
-import "/app/styles/global.css";
-import SuccessModal from "/app/components/organisms/success-modal/sucess-modal";
-import { useAuthStore } from "/app/store.ts";
+import "../../../styles/global.css?__remix_sideEffect__";
+import SuccessModal from "app/components/organisms/success-modal/sucess-modal";
+import { useAuthStore } from "app/store";
 import GeneralHeader from "../../organisms/header-general/header-general";
 import Footer from "../../organisms/footer-general/footer-general";
 

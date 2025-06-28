@@ -13,7 +13,8 @@
     "noEmit": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./app/*"]
+      "~/*": ["./app/*"],
+    "app/*": ["./app/*"]   
     },
     "types": ["@remix-run/node", "vite/client"]
   },
