@@ -1,13 +1,16 @@
-/** @type {import('@remix-run/dev').AppConfig} */
-export default {
+import { defineConfig } from "@remix-run/dev";
+
+export default defineConfig({
+  appDirectory: "app",
+  server: "./server.js",
+  serverBuildPath: ".netlify/functions-internal/server.js",
+  serverModuleFormat: "esm",
+  serverPlatform: "node",
   future: {
-    v2_routeConvention: true
-  },
-  ignoredRouteFiles: ['**/.*'],
-  appDirectory: 'app',
-  assetsBuildDirectory: 'public/build',
-  publicPath: '/build/',
-  serverBuildDirectory: 'netlify/functions/server/build',
-  server: './netlify/server.js',
-  serverModuleFormat: 'esm',
-};
+    v3_fetcherPersist: true,
+    v3_relativeSplatPath: true,
+    v3_throwAbortReason: true,
+    v3_singleFetch: true,
+    v3_lazyRouteDiscovery: true,
+  }
+});
