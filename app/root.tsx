@@ -39,7 +39,7 @@ export const links: LinksFunction = () => [
   {
     rel: "preconnect",
     href: "https://fonts.gstatic.com",
-    crossOrigin: "anonymous",
+    crossOrigin: "anonymous" as const,
   },
   {
     rel: "stylesheet",
