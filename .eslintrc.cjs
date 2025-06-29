@@ -45,9 +45,14 @@ module.exports = {
           { name: "NavLink", linkAttribute: "to" },
         ],
         "import/resolver": {
-          typescript: {},
+          // Usa ambos resolvers
+          node: {
+            extensions: [".js", ".jsx", ".ts", ".tsx", ".css"]
+          },
+          typescript: {}, // lo mantienes si tienes paths personalizados
         },
       },
+
     },
 
     // Typescript

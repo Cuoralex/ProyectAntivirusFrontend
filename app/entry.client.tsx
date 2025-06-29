@@ -3,6 +3,10 @@
  * You are free to delete this file if you'd like to, but if you ever want it revealed again, you can run `npx remix reveal` ✨
  * For more information, see https://remix.run/file-conventions/entry.client
  */
+// ✅ Importa tus estilos globales también aquí
+import "./styles/variables.css";
+import "./tailwind.css";
+import "./styles/global.css";
 
 import { RemixBrowser } from "@remix-run/react";
 import { startTransition, StrictMode } from "react";
