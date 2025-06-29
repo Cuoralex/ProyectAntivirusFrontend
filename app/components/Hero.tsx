@@ -1,11 +1,12 @@
-import Spline from "@splinetool/react-spline";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "@remix-run/react";
+import { useHydrated } from "../utils/useHydrated";
 
 export default function Hero({ className }: { className?: string }) {
   const containerRef = useRef<HTMLDivElement>(null);
-
   const navigate = useNavigate();
+  const hydrated = useHydrated();
+
   const handleClick = () => {
     navigate("/auth/register");
   };
@@ -34,7 +35,21 @@ export default function Hero({ className }: { className?: string }) {
       ref={containerRef}
       className={`fixed top-32 -right-40 z-50 inline-block cursor-pointer ${className}`}
     >
-      <Spline scene="https://prod.spline.design/w1-lU03AK-Pryggi/scene.splinecode" />
+      {hydrated ? <SplineClientLazy scene="https://prod.spline.design/xyz/scene.splinecode" /> : null}
     </div>
   );
+}
+
+function SplineClientLazy({ scene }: { scene: string }) {
+  const [Component, setComponent] = useState<null | React.ElementType>(null);
+
+  useEffect(() => {
+    import("../components/SplineClient").then((mod) => {
+      setComponent(() => mod.default);
+    });
+  }, []);
+
+  if (!Component) return null;
+
+  return <Component scene={scene} />;
 }

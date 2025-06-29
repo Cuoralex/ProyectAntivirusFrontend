@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import {
   Links,
   Meta,
@@ -17,7 +18,7 @@ import "swiper/css/free-mode";
 import { LAYOUT_FOR_ROUTES } from "./utils/constants/routes";
 import NotFoundPage from "./routes/404";
 import { authToken } from "./utils/session.server";
-import { json, type LoaderFunctionArgs, LinksFunction } from "@remix-run/node";
+import { json, type LoaderFunctionArgs, type LinksFunction } from "@remix-run/node";
 import { userRole } from "./utils/session-role.server";
 import { userEmail } from "./utils/session-email.server";
 
@@ -39,7 +40,7 @@ export const links: LinksFunction = () => [
   {
     rel: "preconnect",
     href: "https://fonts.gstatic.com",
-    crossOrigin: "anonymous" as const,
+    crossOrigin: "anonymous" as const
   },
   {
     rel: "stylesheet",

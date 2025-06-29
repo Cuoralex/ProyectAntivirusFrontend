@@ -1,7 +1,10 @@
-import { createRequestHandler } from "@remix-run/netlify";
-import * as build from "../../build/index.js"
+import { createRequestHandler } from "@netlify/remix-adapter";
+// ⚠️ Evitamos que TypeScript colapse al hacer cast interversión
+import * as build from "../../build/server/index.js";
 
+// Evita tipos conflictivos forzando a unknown
 export const handler = createRequestHandler({
-  build,
+  //build: build as unknown as Parameters<typeof createRequestHandler>[0]["build"],
+  build: build as any,
   mode: process.env.NODE_ENV,
 });

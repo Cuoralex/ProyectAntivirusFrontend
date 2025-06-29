@@ -6,6 +6,7 @@
     "lib": ["DOM", "DOM.Iterable", "ES2022"],
     "moduleResolution": "Bundler",
     "esModuleInterop": true,
+    "verbatimModuleSyntax": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
@@ -16,7 +17,7 @@
       "~/*": ["./app/*"],
     "app/*": ["./app/*"]   
     },
-    "types": ["@remix-run/node", "vite/client"]
+    "types": ["@remix-run/node", "vite/client"],
   },
   "include": [
     "**/*.ts",

@@ -1,7 +1,6 @@
 import {
   Home,
   Users,
-  Settings,
   Briefcase,
   Building,
   Layers,

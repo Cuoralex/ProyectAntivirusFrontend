@@ -6,6 +6,7 @@ var __export = (target, all) => {
 
 // netlify/functions/server.ts
 import { createRequestHandler } from "@netlify/remix-adapter";
+import { useState, useEffect } from "react";
 
 // build/server/index.js
 var server_exports = {};
@@ -27,7 +28,7 @@ import { RemixServer, useMatches, Link as Link$1, Outlet, useNavigate as useNavi
 import { isbot } from "isbot";
 import { renderToPipeableStream } from "react-dom/server";
 import * as React from "react";
-import { useState, useEffect, forwardRef as forwardRef2, useRef } from "react";
+import { forwardRef as forwardRef2 } from "react";
 import { X, Menu, Home, Sun, Moon, LogOut, Users, Briefcase, Building, Layers, ClipboardList, FolderCog, Network, Plus, Pencil, Trash2, Star, BarChart2, Settings } from "lucide-react";
 import { useNavigate, Link } from "react-router-dom";
 import { create } from "zustand";
@@ -39,9 +40,9 @@ import * as DialogPrimitive from "@radix-ui/react-dialog";
 import * as LabelPrimitive from "@radix-ui/react-label";
 import PropTypes from "prop-types";
 import { Switch } from "@headlessui/react";
-import { Swiper, SwiperSlide } from "swiper/react";
 import { Carousel } from "react-responsive-carousel";
-import Spline from "@splinetool/react-spline";
+
+
 var ABORT_DELAY = 5e3;
 function handleRequest(request, responseStatusCode, responseHeaders, remixContext) {
   let acceptHeader = request.headers.get("Accept");
@@ -602,7 +603,9 @@ function GeneralLayout() {
   });
 }
 function SuccessModal({
+  // eslint-disable-next-line react/prop-types
   isOpen,
+  // eslint-disable-next-line react/prop-types
   onClose
 }) {
   let navigate = useNavigate$1();
@@ -1087,6 +1090,7 @@ var buttonVariants = cva(
     }
   }
 ), Button = React.forwardRef(
+  // eslint-disable-next-line react/prop-types
   ({ className, variant, size, asChild = !1, ...props }, ref) => /* @__PURE__ */ jsx(
     asChild ? Slot : "button",
     {
@@ -1098,6 +1102,7 @@ var buttonVariants = cva(
 );
 Button.displayName = "Button";
 var Input = React.forwardRef(
+  // eslint-disable-next-line react/prop-types
   ({ className, type, ...props }, ref) => /* @__PURE__ */ jsx(
     "input",
     {
@@ -3906,6 +3911,7 @@ var route10 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePropert
   __proto__: null,
   default: Opportunities,
   loader: loader$4
+// eslint-disable-next-line react/prop-types
 }, Symbol.toStringTag, { value: "Module" })), Card = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx(
   "div",
   {
@@ -3918,6 +3924,7 @@ var route10 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePropert
   }
 ));
 Card.displayName = "Card";
+// eslint-disable-next-line react/prop-types
 var CardHeader = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx(
   "div",
   {
@@ -3927,6 +3934,7 @@ var CardHeader = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__
   }
 ));
 CardHeader.displayName = "CardHeader";
+// eslint-disable-next-line react/prop-types
 var CardTitle = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx(
   "div",
   {
@@ -3936,6 +3944,7 @@ var CardTitle = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ 
   }
 ));
 CardTitle.displayName = "CardTitle";
+// eslint-disable-next-line react/prop-types
 var CardDescription = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx(
   "div",
   {
@@ -3945,8 +3954,10 @@ var CardDescription = React.forwardRef(({ className, ...props }, ref) => /* @__P
   }
 ));
 CardDescription.displayName = "CardDescription";
+// eslint-disable-next-line react/prop-types
 var CardContent = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx("div", { ref, className: cn("p-6 pt-0", className), ...props }));
 CardContent.displayName = "CardContent";
+// eslint-disable-next-line react/prop-types
 var CardFooter = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx(
   "div",
   {
@@ -4954,32 +4965,7 @@ function NuestroEquipo() {
     ]
   });
 }
-function Hero({ className }) {
-  let containerRef = useRef(null), navigate = useNavigate$1(), handleClick = () => {
-    navigate("/auth/register");
-  };
-  return useEffect(() => {
-    let timeout = setTimeout(() => {
-      var _a;
-      let canvas = (_a = containerRef.current) == null ? void 0 : _a.querySelector("canvas");
-      canvas && (canvas.classList.add("w-[200px]", "h-[200px]", "object-contain"), canvas.style.width = "150px", canvas.style.height = "150px");
-    }, 2e3);
-    return () => clearTimeout(timeout);
-  }, []), /* @__PURE__ */ jsx(
-    "div",
-    {
-      role: "button",
-      tabIndex: 0,
-      onClick: handleClick,
-      onKeyDown: (e) => {
-        (e.key === "Enter" || e.key === " ") && handleClick();
-      },
-      ref: containerRef,
-      className: `fixed top-32 -right-40 z-50 inline-block cursor-pointer ${className}`,
-      children: /* @__PURE__ */ jsx(Spline, { scene: "https://prod.spline.design/w1-lU03AK-Pryggi/scene.splinecode" })
-    }
-  );
-}
+
 function CardInfo({ id, urlImg, title, description }) {
   return /* @__PURE__ */ jsxs(
     "div",
@@ -5002,35 +4988,24 @@ function CardInfo({ id, urlImg, title, description }) {
   );
 }
 function SliderCardInfo({ cards }) {
-  return /* @__PURE__ */ jsxs("div", {
+  return /* @__PURE__ */ jsx("div", {
     className: "w-full max-w-full mx-auto text-left",
-    children: [
-      " ",
-      /* @__PURE__ */ jsx(
-        Swiper,
-        {
-          spaceBetween: 20,
-          loop: !0,
-          breakpoints: {
-            320: {
-              slidesPerView: 1
-            },
-            640: {
-              slidesPerView: 2
-            },
-            1024: {
-              slidesPerView: 3
-            },
-            1440: {
-              slidesPerView: 4
-            }
+    children: /* @__PURE__ */ jsx("div", {
+      className: "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 px-4",
+      children: cards.map((cardInfo) =>
+        /* @__PURE__ */ jsx(
+          "div",
+          {
+            className: "flex justify-center",
+            children: /* @__PURE__ */ jsx(CardInfo, { ...cardInfo })
           },
-          children: cards.map((cardInfo) => /* @__PURE__ */ jsx(SwiperSlide, { className: "flex justify-center", children: /* @__PURE__ */ jsx(CardInfo, { ...cardInfo }) }, cardInfo.id))
-        }
+          cardInfo.id
+        )
       )
-    ]
+    })
   });
 }
+
 function Index() {
   useEffect(() => {
     console.log("Cargando _index.tsx");
@@ -5050,7 +5025,6 @@ function Index() {
   }, []), /* @__PURE__ */ jsxs("div", {
     id: "home",
     children: [
-      /* @__PURE__ */ jsx("div", { className: " z-50 items-center justify-center", children: /* @__PURE__ */ jsx(Hero, { className: "w-[20rem] h-[20rem]" }) }),
       /* @__PURE__ */ jsx("section", { className: "w-full max-h-[100vh] overflow-hidden", children: /* @__PURE__ */ jsx(
         "img",
         {

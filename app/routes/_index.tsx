@@ -1,4 +1,3 @@
-import { Swiper, SwiperSlide } from "swiper/react";
 import ContactForm from "~/components/molecules/ContactForm";
 import HomeBanner from "../assets/images/home-fundacion-antivirus.png";
 import { useEffect, useState } from "react";
@@ -49,35 +48,14 @@ function CardInfo({ id, urlImg, title, description }: Readonly<CardInfoProps>) {
 
 function SliderCardInfo({ cards }: Readonly<SliderCardInfoProps>) {
   return (
-    <div className="w-full max-w-full mx-auto text-left">
-      {" "}
-      <Swiper
-        spaceBetween={20}
-        loop
-        breakpoints={{
-          320: {
-            slidesPerView: 1,
-          },
-          640: {
-            slidesPerView: 2,
-          },
-          1024: {
-            slidesPerView: 3,
-          },
-          1440: {
-            slidesPerView: 4,
-          },
-        }}
-      >
-        {cards.map((cardInfo: Readonly<CardInfoProps>) => (
-          <SwiperSlide key={cardInfo.id} className="flex justify-center">
-            <CardInfo {...cardInfo} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+    <div className="w-full max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 px-4">
+      {cards.map((cardInfo: Readonly<CardInfoProps>) => (
+        <CardInfo key={cardInfo.id} {...cardInfo} />
+      ))}
     </div>
   );
 }
+
 
 export default function Index() {
   useEffect(() => {

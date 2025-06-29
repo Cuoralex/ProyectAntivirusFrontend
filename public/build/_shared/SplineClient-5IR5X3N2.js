@@ -1,0 +1,1 @@
+import{a as r,b as l}from"/build/_shared/chunk-F33EF4G7.js";import{d as n}from"/build/_shared/chunk-2QEWK57A.js";var e=n(r(),1),u=n(l(),1);function o({scene:i}){let[t,f]=(0,e.useState)(null);return(0,e.useEffect)(()=>{import("/build/_shared/react-spline-F26JK6AP.js").then(p=>{f(()=>p.default)})},[]),t?(0,u.jsx)(t,{scene:i}):null}export{o as default};

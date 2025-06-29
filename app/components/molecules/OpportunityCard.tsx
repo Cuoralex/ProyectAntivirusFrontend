@@ -1,43 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, ReactNode } from "react";
 import StarRating from "./StarRating";
 
-interface Opportunity {
-  id: number;
-  title: string;
-  description: string;
-  categoryId: number;
-  categoryName: string;
-  institutionId: number;
-  institutionName: string;
-  institutionImage: string;
-  institutionLink: string;
-  opportunityTypeId: number;
-  opportunityTypeName: string;
-  sectorId: number;
-  sectorName: string;
-  localityId: number;
-  localityCity: string;
-  requirements: string;
-  benefits: string;
-  modality: string;
-  publicationDate: string;
-  expirationDate: string;
-  createdAt: string;
-  ownerId: number;
-  status: string;
-  price: number;
-  discountPrice: number;
-  rating: number;
-  ratingCount: number;
-  stock: boolean;
-  freeShipping: boolean;
-  score: number;
-  userId?:number;
-  comment: string;
-}
-
 interface OpportunityCardProps {
-  opportunity: Opportunity;
+  opportunity: {
+    categoryName: ReactNode;
+    modality: ReactNode;
+    score: number;
+    comment: string;
+    userId: number | undefined;
+    publicationDate: string | number | Date;
+    localityCity: ReactNode;
+    opportunityTypeName: ReactNode;
+    sectorName: ReactNode;
+    title: ReactNode;
+    discountPrice?: number;
+    price?: number;
+    id: number;
+    name: string;
+    description: string;
+    categoryId: number;
+    institutionId: number;
+    location: string;
+    requirements: string;
+    benefits: string;
+    createdAt: string;
+    expiration: string;
+    ownerId: number;
+    status: string;
+  };
 }
 
 const OpportunityCard: React.FC<OpportunityCardProps> = ({ opportunity }) => {
@@ -62,14 +52,14 @@ const OpportunityCard: React.FC<OpportunityCardProps> = ({ opportunity }) => {
           }),
         }
       );
-  
+
       if (response.ok) {
         setIsFavorite(true);
       }
     } catch (error) {
       console.error("Error al marcar como favorita:", error);
     }
-  };  
+  };
 
   useEffect(() => {
     const checkFavorite = async () => {
@@ -116,10 +106,11 @@ const OpportunityCard: React.FC<OpportunityCardProps> = ({ opportunity }) => {
             {/* Imagen con etiqueta de estado */}
             <div className="relative w-full h-32 overflow-hidden">
               <img
-                src={opportunity.institutionImage}
-                alt={`Logo de ${opportunity.institutionName}`}
+                src={`/images/institutions/${opportunity.institutionId}.png`} // ✅ ahora es string
+                alt={`Logo de ${opportunity.institutionId}`}
                 className="w-full h-full object-contain"
               />
+
               <span className="absolute top-2 left-2 bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded">
                 {opportunity.status}
               </span>
@@ -146,7 +137,7 @@ const OpportunityCard: React.FC<OpportunityCardProps> = ({ opportunity }) => {
                 }`}
               >
                 <p>
-                  <strong>Institución:</strong> {opportunity.institutionName}
+                  <strong>Institución:</strong> {opportunity.institutionId}
                 </p>
                 <p>
                   <strong>Sector:</strong> {opportunity.sectorName}
@@ -164,7 +155,7 @@ const OpportunityCard: React.FC<OpportunityCardProps> = ({ opportunity }) => {
                 </p>
                 <p>
                   <strong>Fecha de Expiración:</strong>{" "}
-                  {formatDate(opportunity.expirationDate)}
+                  {formatDate(opportunity.expiration)}
                 </p>
               </div>
             </div>
@@ -251,7 +242,7 @@ const OpportunityCard: React.FC<OpportunityCardProps> = ({ opportunity }) => {
               </p>
               <p>
                 <strong>Fecha de Expiración:</strong>{" "}
-                {formatDate(opportunity.expirationDate)}
+                {formatDate(opportunity.expiration)}
               </p>
             </div>
 
@@ -266,7 +257,10 @@ const OpportunityCard: React.FC<OpportunityCardProps> = ({ opportunity }) => {
               <button
                 className="flex-1 bg-gray-800 text-white text-sm font-bold py-2 rounded-lg hover:bg-gray-900 transition"
                 onClick={() =>
-                  window.open(opportunity.institutionLink, "_blank")
+                  window.open(
+                    `/instituciones/${opportunity.institutionId}`,
+                    "_blank"
+                  )
                 }
               >
                 Postularme
