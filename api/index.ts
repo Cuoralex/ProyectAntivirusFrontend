@@ -1,8 +1,5 @@
-// api/index.ts
 import { createRequestHandler } from "@vercel/remix";
-import * as build from "../build/index.js";
+import * as build from "../build/server/index.js";
+import type { ServerBuild } from "@remix-run/server-runtime";
 
-export default createRequestHandler({
-  build,
-  mode: process.env.NODE_ENV,
-});
+export default createRequestHandler(() => build as unknown as ServerBuild);
