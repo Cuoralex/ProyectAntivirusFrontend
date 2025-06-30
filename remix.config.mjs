@@ -4,7 +4,7 @@ export default {
   assetsBuildDirectory: "public/build",
   serverBuildTarget: "node-cjs",
   server: "./api/index.ts",
-  serverBuildPath: "build/server/index.js",
+  serverBuildPath: "build/index.js",
   publicPath: "/build/",
   ignoredRouteFiles: ["**/.*"]
 };

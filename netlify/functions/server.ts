@@ -1,6 +1,6 @@
-import { createRequestHandler } from "@netlify/remix-adapter";
+import { createRequestHandler } from "@vercel/remix";
 // ⚠️ Evitamos que TypeScript colapse al hacer cast interversión
-import * as build from "../../build/server/index.js";
+import * as build from "../../build/index.js";
 
 // Evita tipos conflictivos forzando a unknown
 export const handler = createRequestHandler({
