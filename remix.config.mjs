@@ -2,7 +2,7 @@
 export default {
   appDirectory: "app",
   assetsBuildDirectory: "public/build",
-  serverBuildTarget: "vercel",
+  serverBuildTarget: "node-cjs",
   server: "./api/index.ts",
   serverBuildPath: "build/server/index.js",
   publicPath: "/build/",
